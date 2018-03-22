@@ -1,0 +1,278 @@
+
+List = ['A1','A2','A3','B1','B2','B3','C1','C2','C3']
+
+finish = 0
+window = turtle.Screen()
+m = turtle.Turtle()
+count = 2
+
+m.down
+m.backward(240)
+m.up
+m.forward(80)
+m.left(90)
+m.forward(80)
+m.down
+m.backward(240)
+m.up
+m.forward(80)
+m.right(90)
+m.backward(80)
+m.down
+m.forward(240)
+m.up
+m.backward(80)
+m.left(90)
+m.backward(80)
+m.down
+m.forward(240)
+m.penup()
+
+print("Top is A, Middle is B, Bottom is C")
+print("Left is 1, Middle is 2, Right is 3")
+
+while finish != 1:
+
+    c = input('Please enter the coordinate of square')
+    while c not in List:
+        print("This is not a valid square, please reenter")
+        c = input("Please enter the coordinate of the square")
+    List.remove(c)
+
+    if count != 1:
+        count = 1
+    elif count != 2:
+        count = 2
+
+    if c == "A1":
+        m.goto(-170,10)
+        m.penup()
+        if count == 2:
+            m.goto(-170,40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S1 = 1
+        elif count == 1:
+            m.goto(-230,70)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S1 = 2
+
+    elif c == "A2":
+        m.goto(-90,10)
+        m.penup()
+        if count == 2:
+            m.goto(-90,40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S2 = 1
+        elif count == 1:
+            m.goto(-150,70)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S2 = 2
+
+    elif c == "A3":
+        m.goto(-10,10)
+        m.penup()
+        if count == 2:
+            m.goto(-10,40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S3 = 1
+        elif count == 1:
+            m.penup()
+            m.goto(-70,70)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S3 = 2
+
+    elif c == "B1":
+        m.goto(-170,-70)
+        m.penup()
+        if count == 2:
+            m.goto(-170,-40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S4 = 1
+        elif count == 1:
+            m.goto(-230,-10)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S4 = 2
+
+    elif c == "B2":
+        m.goto(-90,-70)
+        m.penup()
+        if count == 2:
+            m.goto(-90,-40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S5 = 1
+        elif count == 1:
+            m.goto(-150,-10)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S5 = 2
+
+    elif c == "B3":
+        m.goto(-10,-70)
+        m.penup()
+        if count == 2:
+            m.goto(-10,-40)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S6 = 1
+        elif count == 1:
+            m.penup()
+            m.goto(-70,-10)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S6 = 2
+
+    elif c == "C1":
+        m.goto(-170,-150)
+        m.penup()
+        if count == 2:
+            m.goto(-170,-120)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S7 = 1
+        elif count == 1:
+            m.goto(-230,-90)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S7 = 2
+
+    elif c == "C2":
+        m.goto(-90,-150)
+        m.penup()
+        if count == 2:
+            m.goto(-90,-120)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S8 = 1
+        elif count == 1:
+            m.goto(-150,-90)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S8 = 2
+
+    elif c == "C3":
+        m.goto(-10,-150)
+        m.penup()
+        if count == 2:
+            m.goto(-10,-120)
+            m.pendown()
+            m.circle(30)
+            m.penup()
+            S9 = 1
+        elif count == 1:
+            m.penup()
+            m.goto(-70,-90)
+            m.pendown()
+            m.right(135)
+            m.forward(80)
+            m.penup()
+            m.left(135)
+            m.forward(60)
+            m.left(135)
+            m.pendown()
+            m.forward(80)
+            m.penup()
+            m.right(135)
+            S9 = 2
+
+
+    if (S1*S2*S3)==1 or (S1*S4*S7)==1 or (S4*S5*S6)==1 or (S7*S8*S9)==1 or (S2*S5*S8)==1 or (S3*S6*S9)==1 or (S1*S5*S9)==1 or (S3*S5*S7)==1:
+        print(Player2 + " is the winner")
+
+        finish = 1
+    elif (S1*S2*S3)==8 or (S1*S4*S7)==8 or (S4*S5*S6)==8 or (S7*S8*S9)==8 or (S2*S5*S8)==8 or (S3*S6*S9)==8 or (S1*S5*S9)==8 or (S3*S5*S7)==8:
+        print(Player1 + " is the winner")
+        finish = 1
+    elif (S1*S2*S3*S4*S5*S6*S7*S8*S9) > 0:
+        print("It's a draw")
+        finish = 1
+
+window.exitonclick()
