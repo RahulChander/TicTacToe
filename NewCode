@@ -1,0 +1,261 @@
+import turtle
+cooord = ''
+nicole = turtle.Turtle()
+List = ['D']
+Coordinates = 2
+firstcheck = 0
+GAMELIST = ['A1','A2','A3','B1','B2','B3','C1','C2','C3']
+nicole.speed(30)
+dict = {'A1':-1,'A2':-1,'A3':-1,'B1':-1,'B2':-1,'B3':-1,'C1':-1,'C2':-1,'C3':-1}
+playerstatus = 'x'
+raushan = turtle.Screen()
+winner = ''
+
+
+def setup():
+    nicole.penup()
+    nicole.left(180)
+    nicole.forward(150)
+    nicole.right(90)
+    nicole.pendown()
+    nicole.forward(150)
+    nicole.right(90)
+    for i in range(3):
+        nicole.forward(300)
+        nicole.right(90)
+    nicole.forward(150)
+    nicole.penup()
+    nicole.forward(50)
+    nicole.pendown()
+    nicole.right(90)
+    nicole.forward(300)
+    nicole.right(90)
+    nicole.penup()
+    nicole.forward(100)
+    nicole.right(90)
+    nicole.pendown()
+    nicole.forward(300)
+    nicole.penup()
+    for i in range(2):
+        nicole.left(90)
+        nicole.forward(100)
+    nicole.left(90)
+    nicole.pendown()
+    nicole.forward(300)
+    nicole.right(90)
+    nicole.penup()
+    nicole.forward(100)
+    nicole.right(90)
+    nicole.pendown()
+    nicole.forward(300)
+    nicole.penup()
+    #nicole.hideturtle()
+
+setup()
+
+def get_mouse_click_coor(x, y):
+    global cooord
+    x1 = x
+    y1 = y
+    if x1 > 50 and x1 < 150:
+        x2 = 100
+    elif x1 < -50 and x1 > -150:
+        x2 = -100
+    else:
+        x2 = 0
+
+    if y1 > 50 and y1 < 150:
+        y2 = 100
+    elif y1 < -50 and y1 > -150:
+        y2 = -100
+    else:
+        y2 = 0
+    v = [x2,y2]
+    a = (getcoord(v))
+    List.append(a)
+    if len(List) > 1:
+        List.remove(List[len(List)-2])
+    return(v,List)
+
+
+def getcoord(a):
+    global coord
+    global Coordinates
+    if a == [-100,-100]:
+        coord = 'C1'
+    elif a == [-100,0]:
+        coord = 'C2'
+    elif a == [-100,100]:
+        coord = 'C3'
+    elif a == [0,-100]:
+        coord = 'B1'
+    elif a == [0,0]:
+        coord = 'B2'
+    elif a == [0,100]:
+        coord = 'B3'
+    elif a == [100,-100]:
+        coord = 'A1'
+    elif a == [100,0]:
+        coord = 'A2'
+    elif a == [100,100]:
+        coord = 'A3'
+    Coordinates = (a)
+    return(coord)
+
+def gotoandprint(x, y):
+    global List
+    global cooord
+    global Coordinates
+    gotoresult = nicole.goto(x, y)
+    v = get_mouse_click_coor(nicole.xcor(), nicole.ycor())
+    nicole.goto((v[0])[0],(v[0])[1])
+    a = (getcoord(v))
+    cooord = a
+    List.append(cooord)
+    play()
+    return(a)
+
+
+def x():
+    raushan.onscreenclick(gotoandprint)
+
+
+def drawanx():
+    nicole.pendown()
+    nicole.setheading(45)
+    nicole.forward(50)
+    nicole.backward(100)
+    nicole.penup()
+    nicole.forward(50)
+    nicole.left(90)
+    nicole.pendown()
+    nicole.forward(50)
+    nicole.backward(100)
+    nicole.penup()
+    nicole.forward(50)
+
+def drawano():
+    nicole.setheading(90)
+    nicole.forward(-30)
+    nicole.setheading(0)
+    nicole.pendown()
+    nicole.circle(30)
+    nicole.penup()
+
+
+def win(dict):
+    global winner
+    if (dict['A1'] == dict['A2'] == dict['A3']) and dict['A1']!=-1:
+        if dict['A1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['B1'] == dict['B2'] == dict['B3']) and dict['B1']!=-1:
+        if dict['B1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['C1'] == dict['C2'] == dict['C3']) and dict['C1']!=-1:
+        if dict['C1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['A1'] == dict['B1'] == dict['C1']) and dict['C1']!=-1:
+        if dict['A1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['A2'] == dict['B2'] == dict['C2']) and dict['C2']!=-1:
+        if dict['A2'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['A3'] == dict['B3'] == dict['C3']) and dict['C3']!=-1:
+        if dict['A3'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+
+    elif (dict['A1'] == dict['B2'] == dict['C3']) and dict['A1']!=-1:
+        if dict['A1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['A3'] == dict['B2'] == dict['C1']) and dict['C1']!=-1:
+        if dict['C1'] == 0:
+            winner = 'O'
+        else:
+            winner = 'X'
+
+    elif (dict['A1'] !=-1 and dict['A2'] != -1 and dict['A3'] != -1 and dict['C1'] != -1 and dict['C2'] != -1 and dict['C3'] != -1 and dict['B1'] != -1 and dict['B2'] != -1 and dict['B3']!= - 1):
+        winner = 'Neither person'
+
+    else:
+        winner = ''
+
+def play():
+    global GAMELIST
+    global List
+    global playerstatus
+    global firstcheck
+    global winner
+    global dict
+    global coord
+    global cooord
+    global Coordinates
+    level = -1
+
+    if playerstatus == 'x'and List[len(List)-1] in GAMELIST:
+        drawanx()
+        GAMELIST.remove(List[len(List)-1])
+        level = 1
+
+
+        playerstatus = 'o'
+
+    elif playerstatus == 'o' and List[len(List)-1] in GAMELIST:
+        drawano()
+        GAMELIST.remove(List[len(List)-1])
+        playerstatus = 'x'
+        level = 0
+
+
+    if firstcheck == 1:
+        b = nicole.xcor()
+        c = nicole.ycor()
+        d = get_mouse_click_coor(b,c)
+        a = d[0]
+        f = getcoord(a)
+        dict[f] = level
+
+
+    firstcheck = 1
+
+    win(dict)
+    if winner != '':
+        print(winner + ' is the winner!')
+        raushan.clearscreen()
+        nicole.reset()
+        nicole.showturtle()
+        nicole.speed(30)
+        setup()
+        cooord = ''
+        List = ['D']
+        Coordinates = 2
+        firstcheck = 0
+        GAMELIST = ['A1','A2','A3','B1','B2','B3','C1','C2','C3']
+        dict = {'A1':-1,'A2':-1,'A3':-1,'B1':-1,'B2':-1,'B3':-1,'C1':-1,'C2':-1,'C3':-1}
+        playerstatus = 'x'
+        winner = ''
+
+x()
+play()
+raushan.mainloop()
+
